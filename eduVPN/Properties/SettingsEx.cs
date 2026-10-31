@@ -49,6 +49,17 @@ namespace eduVPN.Properties
         /// </summary>
         public string SecureInternetOrganization => GetValue(nameof(SecureInternetOrganization), out string value) ? value : null;
 
+        /// <see cref="Settings.SplitTunnelSettings"/>
+        public SplitTunnelSettingsDictionary SplitTunnelSettings =>
+            GetValue(nameof(SplitTunnelSettings), out SplitTunnelSettingsDictionary value) ? value : Settings.Default.SplitTunnelSettings;
+
+        /// <summary>
+        /// Are the split tunneling settings dictated by the registry?
+        /// </summary>
+        /// <remarks>When they are, the user cannot change them and the settings page shows them
+        /// read-only.</remarks>
+        public bool IsSplitTunnelManaged => GetValue(nameof(SplitTunnelSettings), out SplitTunnelSettingsDictionary _);
+
         #endregion
     }
 }

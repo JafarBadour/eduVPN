@@ -284,5 +284,21 @@ namespace eduVPN.Properties {
                 return ((global::eduVPN.ViewModels.VPN.WireGuardKillSwitchMode)(this["WireGuardKillSwitch"]));
             }
         }
+        
+        /// <summary>
+        /// Client-side split tunneling settings, per server
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Client-side split tunneling settings, per server")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<SplitTunnelSettingsDictionary />")]
+        public global::eduVPN.Xml.SplitTunnelSettingsDictionary SplitTunnelSettings {
+            get {
+                return ((global::eduVPN.Xml.SplitTunnelSettingsDictionary)(this["SplitTunnelSettings"]));
+            }
+            set {
+                this["SplitTunnelSettings"] = value;
+            }
+        }
     }
 }

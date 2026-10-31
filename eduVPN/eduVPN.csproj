@@ -66,6 +66,7 @@
     <Compile Include="Models\AskProfileTransition.cs" />
     <Compile Include="Models\AutoReconnectFailedEventArgs.cs" />
     <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\SplitTunnelSettings.cs" />
     <Compile Include="Models\DiscoverableServer.cs" />
     <Compile Include="Models\Expiration.cs" />
     <Compile Include="Models\IEntityWithKeywords.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="ViewModels\Pages\SelfUpdateProgressPage.cs" />
     <Compile Include="ViewModels\VPN\OpenVPNException.cs" />
     <Compile Include="ViewModels\VPN\TerminationReason.cs" />
+    <Compile Include="ViewModels\VPN\SplitTunnelMode.cs" />
+    <Compile Include="ViewModels\VPN\SplitTunnelRewriter.cs" />
     <Compile Include="ViewModels\VPN\WireGuardKillSwitchMode.cs" />
     <Compile Include="ViewModels\VPN\WireGuardSession.cs" />
     <Compile Include="Xml\InstanceRef.cs" />
@@ -111,15 +114,18 @@
     <Compile Include="Xml\LocalInstanceSourceSettings.cs" />
     <Compile Include="Xml\MinisignPublicKey.cs" />
     <Compile Include="Xml\MinisignPublicKeyDictionary.cs" />
+    <Compile Include="Xml\SplitTunnelSettingsDictionary.cs" />
     <Compile Include="Xml\ProfileRefList.cs" />
     <Compile Include="Xml\ProfileRef.cs" />
     <Compile Include="Models\ValidatableBindableBase.cs" />
     <Compile Include="Properties\Settings.cs" />
+    <Compile Include="IPPrefixMath.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="ViewModels\Pages\AboutPage.cs" />
     <Compile Include="ViewModels\Pages\ConnectWizardPopupPage.cs" />
     <Compile Include="ViewModels\VPN\OpenVPNSession.cs" />
     <Compile Include="ViewModels\Pages\SettingsPage.cs" />
+    <Compile Include="ViewModels\Pages\SplitTunnelSettingsViewModel.cs" />
     <Compile Include="ViewModels\VPN\Session.cs" />
     <Compile Include="ViewModels\VPN\SessionStatusType.cs" />
     <Compile Include="ViewModels\Pages\ConnectWizardStandardPage.cs" />

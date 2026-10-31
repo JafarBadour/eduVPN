@@ -156,6 +156,14 @@ namespace eduVPN.Properties
                     Default.OnPropertyChanged(sender, new PropertyChangedEventArgs(nameof(Default.AccessTokenCache2)));
             };
 
+            // Same for SplitTunnelSettings: the dictionary is mutated in place when the user edits
+            // the settings of a server.
+            Default.SplitTunnelSettings.PropertyChanged += (object sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName == nameof(Default.SplitTunnelSettings.Values))
+                    Default.OnPropertyChanged(sender, new PropertyChangedEventArgs(nameof(Default.SplitTunnelSettings)));
+            };
+
             if ((Default.SettingsVersion & 0x1) == 0)
             {
                 // Migrate settings from previous version.

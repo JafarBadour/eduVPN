@@ -57,5 +57,9 @@
     <Setting Name="WireGuardKillSwitch" Description="WireGuard kill-switch override" Type="eduVPN.ViewModels.VPN.WireGuardKillSwitchMode" Scope="Application">
       <Value Profile="(Default)">Preserve</Value>
     </Setting>
+    <Setting Name="SplitTunnelSettings" Description="Client-side split tunneling settings, per server" Type="eduVPN.Xml.SplitTunnelSettingsDictionary" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SplitTunnelSettingsDictionary /&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
