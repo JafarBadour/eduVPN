@@ -928,5 +928,203 @@ namespace eduVPN.Views.Resources {
                 return ResourceManager.GetString("TimeSpanSeconds", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Split tunneling.
+        /// </summary>
+        public static string SettingsPageSplitTunnelTitle {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose which traffic goes through the VPN. These settings are stored on this computer only and are a.
+        /// </summary>
+        public static string SettingsPageSplitTunnelDescription {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se_rver:.
+        /// </summary>
+        public static string SettingsPageSplitTunnelServerLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelServerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your institution configured this profile to route all traffic; overriding it may violate its policy..
+        /// </summary>
+        public static string SettingsPageSplitTunnelDefaultGatewayWarning {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDefaultGatewayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Mode:.
+        /// </summary>
+        public static string SettingsPageSplitTunnelModeLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off - use the configuration from the server.
+        /// </summary>
+        public static string SettingsPageSplitTunnelModeOff {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelModeOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only send the networks below through the VPN.
+        /// </summary>
+        public static string SettingsPageSplitTunnelModeIncludeOnly {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelModeIncludeOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send everything except the networks below through the VPN.
+        /// </summary>
+        public static string SettingsPageSplitTunnelModeExclude {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelModeExclude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This profile routes all traffic through the VPN. Changing that may violate the policy of your instit.
+        /// </summary>
+        public static string SettingsPageSplitTunnelPolicyWarning {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelPolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Continue.
+        /// </summary>
+        public static string SettingsPageSplitTunnelPolicyAccept {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelPolicyAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_ancel.
+        /// </summary>
+        public static string SettingsPageSplitTunnelPolicyDecline {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelPolicyDecline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Networks:.
+        /// </summary>
+        public static string SettingsPageSplitTunnelRoutesLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelRoutesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A_dd.
+        /// </summary>
+        public static string SettingsPageSplitTunnelAddRoute {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelAddRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R_emove.
+        /// </summary>
+        public static string SettingsPageSplitTunnelRemoveRoute {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelRemoveRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPv4 and IPv6 are handled separately. If you only list IPv4 networks, all IPv6 traffic keeps using t.
+        /// </summary>
+        public static string SettingsPageSplitTunnelIPv6Hint {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelIPv6Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _DNS:.
+        /// </summary>
+        public static string SettingsPageSplitTunnelDnsLabel {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDnsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the DNS servers of the VPN for everything.
+        /// </summary>
+        public static string SettingsPageSplitTunnelDnsServer {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDnsServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the DNS servers of the VPN for its own domains only.
+        /// </summary>
+        public static string SettingsPageSplitTunnelDnsSplit {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDnsSplit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep using the DNS servers of this computer.
+        /// </summary>
+        public static string SettingsPageSplitTunnelDnsSystem {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDnsSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WireGuard applies DNS servers to the whole tunnel interface, so for WireGuard the first two options .
+        /// </summary>
+        public static string SettingsPageSplitTunnelDnsHint {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelDnsHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are connected to this server. Reconnect to apply the new settings..
+        /// </summary>
+        public static string SettingsPageSplitTunnelReconnectHint {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelReconnectHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to These settings are configured by your organization and cannot be changed here..
+        /// </summary>
+        public static string SettingsPageSplitTunnelManagedHint {
+            get {
+                return ResourceManager.GetString("SettingsPageSplitTunnelManagedHint", resourceCulture);
+            }
+        }
     }
 }

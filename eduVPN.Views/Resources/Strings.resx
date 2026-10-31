@@ -431,4 +431,70 @@ Was "Testing..." but got a user complaint what this means. GUI doesn't provide e
   <data name="ConnectionPageSessionFailover" xml:space="preserve">
     <value>Retry using _TCP</value>
   </data>
+  <data name="SettingsPageSplitTunnelTitle" xml:space="preserve">
+    <value>Split tunneling</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDescription" xml:space="preserve">
+    <value>Choose which traffic goes through the VPN. These settings are stored on this computer only and are applied every time you connect.</value>
+  </data>
+  <data name="SettingsPageSplitTunnelServerLabel" xml:space="preserve">
+    <value>Se_rver:</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDefaultGatewayWarning" xml:space="preserve">
+    <value>Your institution configured this profile to route all traffic; overriding it may violate its policy.</value>
+  </data>
+  <data name="SettingsPageSplitTunnelModeLabel" xml:space="preserve">
+    <value>_Mode:</value>
+  </data>
+  <data name="SettingsPageSplitTunnelModeOff" xml:space="preserve">
+    <value>Off - use the configuration from the server</value>
+  </data>
+  <data name="SettingsPageSplitTunnelModeIncludeOnly" xml:space="preserve">
+    <value>Only send the networks below through the VPN</value>
+  </data>
+  <data name="SettingsPageSplitTunnelModeExclude" xml:space="preserve">
+    <value>Send everything except the networks below through the VPN</value>
+  </data>
+  <data name="SettingsPageSplitTunnelPolicyWarning" xml:space="preserve">
+    <value>This profile routes all traffic through the VPN. Changing that may violate the policy of your institution, and traffic you exclude is no longer protected by the VPN. Continue?</value>
+  </data>
+  <data name="SettingsPageSplitTunnelPolicyAccept" xml:space="preserve">
+    <value>_Continue</value>
+  </data>
+  <data name="SettingsPageSplitTunnelPolicyDecline" xml:space="preserve">
+    <value>C_ancel</value>
+  </data>
+  <data name="SettingsPageSplitTunnelRoutesLabel" xml:space="preserve">
+    <value>_Networks:</value>
+  </data>
+  <data name="SettingsPageSplitTunnelAddRoute" xml:space="preserve">
+    <value>A_dd</value>
+  </data>
+  <data name="SettingsPageSplitTunnelRemoveRoute" xml:space="preserve">
+    <value>R_emove</value>
+  </data>
+  <data name="SettingsPageSplitTunnelIPv6Hint" xml:space="preserve">
+    <value>IPv4 and IPv6 are handled separately. If you only list IPv4 networks, all IPv6 traffic keeps using the VPN.</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDnsLabel" xml:space="preserve">
+    <value>_DNS:</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDnsServer" xml:space="preserve">
+    <value>Use the DNS servers of the VPN for everything</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDnsSplit" xml:space="preserve">
+    <value>Use the DNS servers of the VPN for its own domains only</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDnsSystem" xml:space="preserve">
+    <value>Keep using the DNS servers of this computer</value>
+  </data>
+  <data name="SettingsPageSplitTunnelDnsHint" xml:space="preserve">
+    <value>WireGuard applies DNS servers to the whole tunnel interface, so for WireGuard the first two options behave the same.</value>
+  </data>
+  <data name="SettingsPageSplitTunnelReconnectHint" xml:space="preserve">
+    <value>You are connected to this server. Reconnect to apply the new settings.</value>
+  </data>
+  <data name="SettingsPageSplitTunnelManagedHint" xml:space="preserve">
+    <value>These settings are configured by your organization and cannot be changed here.</value>
+  </data>
 </root>

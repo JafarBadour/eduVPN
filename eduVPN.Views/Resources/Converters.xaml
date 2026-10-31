@@ -54,6 +54,7 @@
             <sys:Boolean>True</sys:Boolean>
         </conv:StringVisibilityConverter.Invert>
     </conv:StringVisibilityConverter>
+    <conv:StringVisibilityConverter x:Key="StringVisibilityConverter"/>
     <conv:TimeSpanToHumanReadableConverter x:Key="TimeSpanToHumanReadableConverter"/>
     <conv:UriStripProtocolConverter x:Key="UriStripProtocolConverter"/>
     <conv:SessionStatusTypeDescriptionConverter x:Key="SessionStatusTypeDescriptionConverter"/>

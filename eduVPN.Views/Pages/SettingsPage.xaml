@@ -11,6 +11,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prop="clr-namespace:eduVPN.Properties;assembly=eduVPN"
+    xmlns:vpn="clr-namespace:eduVPN.ViewModels.VPN;assembly=eduVPN"
     xmlns:propView="clr-namespace:eduVPN.Views.Properties;assembly=eduVPN.Views"
     xmlns:res="clr-namespace:eduVPN.Views.Resources"
     xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
@@ -29,6 +30,7 @@
 
     <Grid VerticalAlignment="Top">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -120,6 +122,218 @@
                     AutomationProperties.Name="{Binding Source={x:Static res:Strings.SettingsPageWireGuardKillSwitchLabel}, Converter={StaticResource RemoveAccessKeyConverter}}">
                     <AccessText Text="{x:Static res:Strings.SettingsPageWireGuardKillSwitchLabel}"/>
                 </CheckBox>
+            </Grid>
+        </Border>
+        <Border
+            Grid.Row="5"
+            Margin="7"
+            Style="{StaticResource SeparatorStyle}">
+            <Grid Margin="0,7" DataContext="{Binding SplitTunnel}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MicroHeadingStyle}"
+                    Text="{x:Static res:Strings.SettingsPageSplitTunnelTitle}"/>
+
+                <StackPanel Grid.Row="1" Margin="0,0,0,5">
+                    <TextBlock
+                        Text="{x:Static res:Strings.SettingsPageSplitTunnelDescription}"
+                        TextWrapping="Wrap"/>
+
+                    <TextBlock
+                        Margin="0,5,0,0"
+                        Text="{x:Static res:Strings.SettingsPageSplitTunnelManagedHint}"
+                        TextWrapping="Wrap"
+                        Visibility="{Binding IsManaged, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+                </StackPanel>
+
+                <Grid Grid.Row="2" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Target="{Binding ElementName=SplitTunnelServer}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelServerLabel}"/>
+
+                    <ComboBox
+                        x:Name="SplitTunnelServer"
+                        Grid.Column="1"
+                        ItemsSource="{Binding Servers}"
+                        SelectedItem="{Binding SelectedServer}"/>
+                </Grid>
+
+                <TextBlock
+                    Grid.Row="3"
+                    Margin="0,0,0,5"
+                    Text="{x:Static res:Strings.SettingsPageSplitTunnelDefaultGatewayWarning}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding IsDefaultGateway, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+
+                <Grid Grid.Row="4" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Target="{Binding ElementName=SplitTunnelModeCombo}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelModeLabel}"/>
+
+                    <ComboBox
+                        x:Name="SplitTunnelModeCombo"
+                        Grid.Column="1"
+                        IsEnabled="{Binding IsEditable}"
+                        SelectedValuePath="Tag"
+                        SelectedValue="{Binding Mode}">
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelModeOff}" Tag="{x:Static vpn:SplitTunnelMode.Off}"/>
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelModeIncludeOnly}" Tag="{x:Static vpn:SplitTunnelMode.IncludeOnly}"/>
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelModeExclude}" Tag="{x:Static vpn:SplitTunnelMode.Exclude}"/>
+                    </ComboBox>
+                </Grid>
+
+                <Grid
+                    Grid.Row="5"
+                    Margin="0,0,0,5"
+                    Visibility="{Binding PolicyWarningPending, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Text="{x:Static res:Strings.SettingsPageSplitTunnelPolicyWarning}"
+                        TextWrapping="Wrap"/>
+
+                    <StackPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="0,0,7,0"
+                            Command="{Binding AcceptPolicyWarning}"
+                            Content="{x:Static res:Strings.SettingsPageSplitTunnelPolicyAccept}"/>
+                        <Button
+                            Command="{Binding DeclinePolicyWarning}"
+                            Content="{x:Static res:Strings.SettingsPageSplitTunnelPolicyDecline}"/>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock
+                    Grid.Row="6"
+                    Margin="0,0,0,5"
+                    Text="{x:Static res:Strings.SettingsPageSplitTunnelIPv6Hint}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding IsSplitTunnelEnabled, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+
+                <Grid
+                    Grid.Row="7"
+                    Margin="0,0,0,5"
+                    IsEnabled="{Binding IsEditable}"
+                    Visibility="{Binding IsSplitTunnelEnabled, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.ColumnSpan="2"
+                        Target="{Binding ElementName=SplitTunnelNewRoute}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelRoutesLabel}"/>
+
+                    <TextBox
+                        x:Name="SplitTunnelNewRoute"
+                        Grid.Row="1"
+                        MaxLength="64"
+                        Text="{Binding NewRoute, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="7,0,0,0"
+                        Command="{Binding AddRoute}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelAddRoute}"/>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding RouteError}"
+                        TextWrapping="Wrap"
+                        Visibility="{Binding RouteError, Converter={StaticResource StringVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+
+                    <ListBox
+                        Grid.Row="3"
+                        MaxHeight="120"
+                        ItemsSource="{Binding Routes}"
+                        SelectedItem="{Binding SelectedRoute}"/>
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="7,0,0,0"
+                        VerticalAlignment="Top"
+                        Command="{Binding RemoveRoute}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelRemoveRoute}"/>
+                </Grid>
+
+                <Grid
+                    Grid.Row="8"
+                    Margin="0,0,0,5"
+                    Visibility="{Binding IsSplitTunnelEnabled, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Target="{Binding ElementName=SplitTunnelDnsCombo}"
+                        Content="{x:Static res:Strings.SettingsPageSplitTunnelDnsLabel}"/>
+
+                    <ComboBox
+                        x:Name="SplitTunnelDnsCombo"
+                        Grid.Column="1"
+                        IsEnabled="{Binding IsEditable}"
+                        SelectedValuePath="Tag"
+                        SelectedValue="{Binding Dns}">
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelDnsServer}" Tag="{x:Static vpn:SplitTunnelDnsMode.Server}"/>
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelDnsSplit}" Tag="{x:Static vpn:SplitTunnelDnsMode.Split}"/>
+                        <ComboBoxItem Content="{x:Static res:Strings.SettingsPageSplitTunnelDnsSystem}" Tag="{x:Static vpn:SplitTunnelDnsMode.System}"/>
+                    </ComboBox>
+                </Grid>
+
+                <TextBlock
+                    Grid.Row="9"
+                    Margin="0,0,0,5"
+                    Text="{x:Static res:Strings.SettingsPageSplitTunnelDnsHint}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding IsSplitTunnelEnabled, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+
+                <TextBlock
+                    Grid.Row="10"
+                    Text="{x:Static res:Strings.SettingsPageSplitTunnelReconnectHint}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding NeedsReconnect, Converter={StaticResource BooleanVisibilityConverter}, FallbackValue={x:Static Visibility.Collapsed}}"/>
             </Grid>
         </Border>
     </Grid>

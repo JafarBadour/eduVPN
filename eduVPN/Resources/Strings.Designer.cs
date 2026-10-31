@@ -402,5 +402,23 @@ namespace eduVPN.Resources {
                 return ResourceManager.GetString("WarningWindowsUpdatesStalled", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid IPv4 or IPv6 network in CIDR notation, for example 10.0.0.0/8 or 2001:db8::/32. A netw.
+        /// </summary>
+        internal static string SplitTunnelRouteInvalid {
+            get {
+                return ResourceManager.GetString("SplitTunnelRouteInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No more networks can be added to this server..
+        /// </summary>
+        internal static string SplitTunnelTooManyRoutes {
+            get {
+                return ResourceManager.GetString("SplitTunnelTooManyRoutes", resourceCulture);
+            }
+        }
     }
 }
