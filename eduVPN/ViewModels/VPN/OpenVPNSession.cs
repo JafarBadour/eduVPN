@@ -172,6 +172,14 @@ namespace eduVPN.ViewModels.VPN
 
                         // Prepare OpenVPN configuration.
                         Trace.TraceInformation("Preparing OpenVPN configuration {0}", ConnectionId);
+                        // Split tunneling is re-applied to every configuration the server hands
+                        // out, including the one we fall back to after a WireGuard failover. When
+                        // it is switched off the configuration is returned unchanged, so the
+                        // generated .ovpn stays byte-identical.
+                        var splitTunnel = Properties.SettingsEx.Default.SplitTunnelSettings.Get(Server.Id);
+                        if (splitTunnel.IsActive)
+                            Trace.TraceInformation("Applying split tunneling ({0}) to OpenVPN configuration {1}", splitTunnel.Mode, ConnectionId);
+                        var vpnConfig = SplitTunnelRewriter.ApplyOpenVPN(Config.VPNConfig, splitTunnel, Config.IsDefaultGateway);
                         using (var fs = new MemoryStream())
                         {
                             using (var sw = new StreamWriter(fs))
@@ -180,7 +188,7 @@ namespace eduVPN.ViewModels.VPN
                                 {
                                     // Remove options on the OpenVPNRemoveOptions list on the fly.
                                     Trace.TraceInformation("Removing {0} from OpenVPN configuration {1}", string.Join(", ", openVPNRemoveOptions), ConnectionId);
-                                    using (var sr = new StringReader(Config.VPNConfig))
+                                    using (var sr = new StringReader(vpnConfig))
                                     {
                                         string inlineTerm = null;
                                         var inlineRemove = false;
@@ -240,7 +248,7 @@ namespace eduVPN.ViewModels.VPN
                                     }
                                 }
                                 else
-                                    sw.WriteLine(Config.VPNConfig);
+                                    sw.WriteLine(vpnConfig);
 
                                 // Introduce ourself (to OpenVPN server).
                                 var assembly = Assembly.GetExecutingAssembly();

@@ -238,6 +238,35 @@ namespace eduVPN.ViewModels.VPN
                             break;
                     }
 
+                    // Split tunneling is applied after the kill-switch setting, so it works on the
+                    // allowed IPs the tunnel would really have used. Enforce + Exclude therefore
+                    // means the excluded prefixes are the only traffic leaving outside the tunnel,
+                    // which is exactly what the user asked for; Enforce + IncludeOnly means traffic
+                    // outside the include list is not blocked, only not tunnelled. See
+                    // docs/SPLIT_TUNNELING.md for the full matrix.
+                    var splitTunnel = Properties.SettingsEx.Default.SplitTunnelSettings.Get(Server.Id);
+                    if (splitTunnel.Mode != SplitTunnelMode.Off)
+                    {
+                        Trace.TraceInformation("Applying split tunneling ({0})", splitTunnel.Mode);
+                        foreach (var peer in iface.Peers)
+                            peer.AllowedIPs = SplitTunnelRewriter.Apply(
+                                peer.AllowedIPs,
+                                splitTunnel,
+                                Config.IsDefaultGateway,
+                                iface.Addresses,
+                                SplitTunnelRewriter.EndpointPrefix(peer.Endpoint?.Host));
+                    }
+                    if (splitTunnel.Dns == SplitTunnelDnsMode.System)
+                    {
+                        // The WireGuard tunnel manager service applies DNS interface-wide, so the
+                        // only split DNS behaviour we can express here is dropping the pushed
+                        // resolvers entirely. TODO: add per-domain NRPT rules to eduWGManager to
+                        // support SplitTunnelDnsMode.Split like the official client does.
+                        Trace.TraceInformation("Dropping the DNS servers pushed by the server");
+                        iface.DNS = null;
+                        iface.DNSSearch = null;
+                    }
+
                     // Connect to WireGuard Tunnel Manager Service to activate the tunnel.
                     using (var managerSession = new eduWireGuard.ManagerService.Session())
                     {

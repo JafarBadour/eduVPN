@@ -97,6 +97,13 @@ namespace eduVPN.ViewModels.VPN
         protected Configuration Config { get; }
 
         /// <summary>
+        /// Does the active profile route all traffic through the VPN?
+        /// </summary>
+        /// <remarks>Exposed so the settings page can warn about overriding a full-tunnel policy
+        /// without handing out the configuration itself.</remarks>
+        public bool IsDefaultGateway => Config.IsDefaultGateway;
+
+        /// <summary>
         /// VPN session worker
         /// </summary>
         public Thread Thread { get; }
